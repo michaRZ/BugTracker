@@ -61,11 +61,23 @@
     <Compile Include="PersonDetail.cs" />
     <Compile Include="PersonEdit.cs" />
     <Compile Include="PersonListItem.cs" />
+    <Compile Include="BugAssign.cs" />
+    <Compile Include="BugCreate.cs" />
+    <Compile Include="BugDetail.cs" />
+    <Compile Include="BugEdit.cs" />
+    <Compile Include="BugListItem.cs" />
+    <Compile Include="BugStageEdit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BugTracker.Data\BugTracker.Data.csproj">
+      <Project>{178EDE57-2950-480D-BD06-3CD2827C1E38}</Project>
+      <Name>BugTracker.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
