@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using BugTracker.WebAPI.Providers;
 using BugTracker.WebAPI.Models;
+using BugTracker.Data;
 
 namespace BugTracker.WebAPI
 {
