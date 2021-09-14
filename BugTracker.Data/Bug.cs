@@ -30,7 +30,7 @@ namespace BugTracker.Data
         public DateTimeOffset ExpectedResolutionUTC { get; set; }
         public DateTimeOffset? ActualResolutionUTC { get; set; }
         public string ResolutionSummary { get; set; }
-        public DateTimeOffset? CreatedUTC { get; set; }
+        public DateTimeOffset CreatedUTC { get; set; }
         public DateTimeOffset? ModifiedUTC { get; set; }
         public string ModifiedBy { get; set; }
     }
