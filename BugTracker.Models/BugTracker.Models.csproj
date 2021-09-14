@@ -57,6 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectCreate.cs" />
+    <Compile Include="ProjectDetail.cs" />
+    <Compile Include="ProjectListItem.cs" />
     <Compile Include="PersonCreate.cs" />
     <Compile Include="PersonDetail.cs" />
     <Compile Include="PersonEdit.cs" />

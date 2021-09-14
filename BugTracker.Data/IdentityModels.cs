@@ -34,8 +34,8 @@ namespace BugTracker.Data
         }
 
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Person> People { get; set; }
-        public DbSet<Bug> Bugs { get; set; }
+        //public DbSet<Person> People { get; set; }
+        //public DbSet<Bug> Bugs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
