@@ -57,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PersonCreate.cs" />
+    <Compile Include="PersonDetail.cs" />
+    <Compile Include="PersonEdit.cs" />
+    <Compile Include="PersonListItem.cs" />
     <Compile Include="BugAssign.cs" />
     <Compile Include="BugCreate.cs" />
     <Compile Include="BugDetail.cs" />
