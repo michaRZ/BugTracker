@@ -311,6 +311,14 @@
       <Project>{178EDE57-2950-480D-BD06-3CD2827C1E38}</Project>
       <Name>BugTracker.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BugTracker.Models\BugTracker.Models.csproj">
+      <Project>{36c95c81-fb71-44aa-8f1f-e90377c612d5}</Project>
+      <Name>BugTracker.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BugTracker.Services\BugTracker.Services.csproj">
+      <Project>{a36e613d-d9e1-400b-aa4e-ad6c170c7e02}</Project>
+      <Name>BugTracker.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
