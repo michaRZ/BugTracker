@@ -26,7 +26,8 @@ namespace BugTracker.Services
                 IdentifiedUtc = model.IdentifiedUtc,
                 ProjectId = model.ProjectId,
                 AssignedTo = model.AssignedTo,
-                Priority = model.Priority
+                Priority = model.Priority,
+                Status = Stage.New
             };
 
             using (var ctx = new ApplicationDbContext())
