@@ -51,7 +51,7 @@ namespace BugTracker.Data
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(IdentityUserLoginConfiguration => IdentityUserLoginConfiguration.UserId);
+            HasKey(iul => iul.UserId);
         }
     }
 
