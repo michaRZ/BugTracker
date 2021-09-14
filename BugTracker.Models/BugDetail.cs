@@ -13,6 +13,8 @@ namespace BugTracker.Models
         public int BugId { get; set; }
         public string BugName { get; set; }
         public string BugDescription { get; set; }
+        public int ProjectId { get; set; }
+        public int? AssignedTo { get; set; }
         public Stage Status { get; set; }
         public bool ActiveProblem { get; set; }
         public Priority Priority { get; set; }
