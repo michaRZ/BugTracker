@@ -8,8 +8,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Data", "BugTracker.Data\BugTracker.Data.csproj", "{178EDE57-2950-480D-BD06-3CD2827C1E38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Models", "BugTracker.Models\BugTracker.Models.csproj", "{36C95C81-FB71-44AA-8F1F-E90377C612D5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{178EDE57-2950-480D-BD06-3CD2827C1E38} = {178EDE57-2950-480D-BD06-3CD2827C1E38}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Services", "BugTracker.Services\BugTracker.Services.csproj", "{A36E613D-D9E1-400B-AA4E-AD6C170C7E02}"
+	ProjectSection(ProjectDependencies) = postProject
+		{178EDE57-2950-480D-BD06-3CD2827C1E38} = {178EDE57-2950-480D-BD06-3CD2827C1E38}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

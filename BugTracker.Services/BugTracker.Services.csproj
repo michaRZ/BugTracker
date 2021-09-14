@@ -57,11 +57,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BugService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BugTracker.Data\BugTracker.Data.csproj">
+      <Project>{178EDE57-2950-480D-BD06-3CD2827C1E38}</Project>
+      <Name>BugTracker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BugTracker.Models\BugTracker.Models.csproj">
+      <Project>{36C95C81-FB71-44AA-8F1F-E90377C612D5}</Project>
+      <Name>BugTracker.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
