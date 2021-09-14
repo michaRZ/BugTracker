@@ -25,7 +25,7 @@ namespace BugTracker.Data
         public int? AssignedTo { get; set; }
         public Stage Status { get; set; }
         public bool ActiveProblem { get; set; } = true;
-        public Priority Priority { get; set; }
+        public Priority? Priority { get; set; }
 
         public DateTimeOffset ExpectedResolutionUTC { get; set; }
         public DateTimeOffset? ActualResolutionUTC { get; set; }
