@@ -25,13 +25,14 @@ namespace BugTracker.Data
         
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
+
         // [Required]
         // [ForeignKey(nameof(Person))]  // how to tie Project Creator w/ project automatically?
         // [Display(Name ="Created By")]
         // public int PersonId { get; set; }
         
-        
-        // public DateTimeOffset? ModifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
+
         //[ForeignKey(nameof(Person))]
         // public int? ModifiedBy { get; set; }
 
