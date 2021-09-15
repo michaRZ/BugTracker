@@ -71,7 +71,6 @@ namespace BugTracker.Services
                             ProjectId = e.ProjectId,
                             AssignedTo = e.AssignedTo,
                             Status = e.Status
-
                         }
                     );
                 return query.ToArray();
