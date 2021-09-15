@@ -58,12 +58,14 @@ namespace BugTracker.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<BugListItem> GetByDesc(string search)
+        public IEnumerable<BugListItem> GetBySearch(string search)
         {
             using (var ctx= new ApplicationDbContext())
             {
                 var obj = search.ToUpper();
-                var query = ctx.Bugs.Where(e => e.BugDescription.ToUpper().Contains(obj)).Select
+                var query = ctx.Bugs.Where(e => e.BugDescription.ToUpper().Contains(obj)||
+                e.ResolutionSummary.ToUpper().Contains(obj)
+                ).Select
                     (
                         e => new BugListItem
                         {
