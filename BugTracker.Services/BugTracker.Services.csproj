@@ -57,8 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PersonService.cs" />
     <Compile Include="BugService.cs" />
+    <Compile Include="PersonService.cs" />
     <Compile Include="ProjectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,11 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BugTracker.Data\BugTracker.Data.csproj">
-      <Project>{178ede57-2950-480d-bd06-3cd2827c1e38}</Project>
-      <Name>BugTracker.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BugTracker.Models\BugTracker.Models.csproj">
-      <Project>{36c95c81-fb71-44aa-8f1f-e90377c612d5}</Project>
       <Project>{178EDE57-2950-480D-BD06-3CD2827C1E38}</Project>
       <Name>BugTracker.Data</Name>
     </ProjectReference>
