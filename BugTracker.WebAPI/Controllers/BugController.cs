@@ -112,7 +112,7 @@ namespace BugTracker.WebAPI.Controllers
 
             var bugService = CreateBugService();
 
-            if (!bugService.ResolveBug(model))
+            if (!bugService.BugResolve(model))
                 return InternalServerError();
 
             return Ok();
