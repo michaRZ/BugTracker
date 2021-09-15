@@ -90,5 +90,19 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok();
         }
+        [HttpPut]
+        public IHttpActionResult AssignBug(BugAssign model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bugService = CreateBugService();
+
+            if (!bugService.AssignBug(model))
+                return InternalServerError();
+
+            return Ok();
+
+        }
     }
 }
