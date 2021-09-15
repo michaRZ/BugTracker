@@ -116,6 +116,30 @@ namespace BugTracker.WebAPI.Controllers
                 return InternalServerError();
 
             return Ok();
+        }
+        [HttpPut]
+        public IHttpActionResult ArchiveBug(BugArchive model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bugService = CreateBugService();
+
+            if (!bugService.ArchiveBug(model))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteBug(int id)
+        {
+            var bugService = CreateBugService();
+
+            if (!bugService.DeleteBug(id))
+                return InternalServerError();
+
+            return Ok();
 
         }
     }
