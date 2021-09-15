@@ -65,6 +65,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BugTracker.Data\BugTracker.Data.csproj">
+      <Project>{178ede57-2950-480d-bd06-3cd2827c1e38}</Project>
+      <Name>BugTracker.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BugTracker.Models\BugTracker.Models.csproj">
       <Project>{36c95c81-fb71-44aa-8f1f-e90377c612d5}</Project>
       <Name>BugTracker.Models</Name>

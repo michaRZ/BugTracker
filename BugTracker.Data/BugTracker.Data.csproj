@@ -102,10 +102,6 @@
       <Project>{36c95c81-fb71-44aa-8f1f-e90377c612d5}</Project>
       <Name>BugTracker.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BugTracker.Services\BugTracker.Services.csproj">
-      <Project>{a36e613d-d9e1-400b-aa4e-ad6c170c7e02}</Project>
-      <Name>BugTracker.Services</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
