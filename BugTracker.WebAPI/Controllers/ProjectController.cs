@@ -15,7 +15,7 @@ namespace BugTracker.WebAPI.Controllers
     public class ProjectController : ApiController
     {
         [HttpPost]
-        public async Task<IHttpActionResult> Post(ProjectCreate project)
+        public IHttpActionResult Post(ProjectCreate project)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -30,11 +30,80 @@ namespace BugTracker.WebAPI.Controllers
 
 
         [HttpGet]
-        public async Task<IHttpActionResult> GetAllProjects()
+        public IHttpActionResult GetAllProjects()
         {
             ProjectService projectService = CreateProjectService();
             var projects = projectService.GetProjects();
             return Ok(projects);
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult GetActiveProjcts()
+        {
+            ProjectService projectService = CreateProjectService();
+            var activeProjects = projectService.GetActiveProjects();
+            return Ok(activeProjects);
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult GetInactiveProjects()
+        {
+            ProjectService projectService = CreateProjectService();
+            var inactiveProjects = projectService.GetInactiveProjects();
+            return Ok(inactiveProjects);
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult GetProjectById(int id)
+        {
+            ProjectService projectService = CreateProjectService();
+            var project = projectService.GetProjectById(id);
+            return Ok(project);
+        }
+
+
+        [HttpPut]
+        public IHttpActionResult Put(ProjectEdit project)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateProjectService();
+
+            if (!service.UpdateProject(project))
+                return InternalServerError();
+
+            return Ok("Project details updated!");
+        }
+
+
+        [HttpPut]
+        public IHttpActionResult PutStatus(ProjectStatus project)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateProjectService();
+
+            if (!service.UpdateProjectStatus(project))
+                return InternalServerError();
+
+            return Ok("Project status updated!");
+        }
+
+
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateProjectService();
+
+            if (!service.DeleteProject(id))
+                return InternalServerError();
+
+            return Ok("Project deleted!");
         }
 
 
