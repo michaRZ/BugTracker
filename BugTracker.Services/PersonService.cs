@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Services
 {
-    class PersonService
+    public class PersonService
     {
+        // not sure about the guid thing
     }
 }
