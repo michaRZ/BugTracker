@@ -27,7 +27,8 @@ namespace BugTracker.Services
                 ProjectId = model.ProjectId,
                 AssignedTo = model.AssignedTo,
                 Priority = model.Priority,
-                Status = Stage.New
+                Status = Stage.New,
+                CreatedUTC=DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -96,6 +97,67 @@ namespace BugTracker.Services
                     CreatedUTC=entity.CreatedUTC,
                     ModifiedUTC=entity.ModifiedUTC
                 };
+            }
+        }
+        public bool EditBug(BugEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                ctx.Bugs.Single(e => e.BugId == model.BugId);
+
+                entity.BugName = model.BugName;
+                entity.BugDescription = model.BugDescription;
+                entity.IdentifiedUtc = model.IdentifiedUtc;
+                entity.ProjectId = model.ProjectId;
+                entity.AssignedTo = model.AssignedTo;
+                entity.Status = model.Status;
+                entity.Priority = model.Priority;
+                entity.ExpectedResolutionUTC = model.ExpectedResolutionUTC;
+                entity.ActualResolutionUTC = model.ActualResolutionUTC;
+                entity.ResolutionSummary = model.ResolutionSummary;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool UpdateBug(BugStageEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Bugs.Single(e => e.BugId == model.BugId);
+
+                entity.Status = model.Status;
+                entity.ActiveProblem = model.ActiveProblem;
+                entity.Priority = model.Priority;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool ResolveBug(BugResolve model)
+        {
+
+        }
+        public bool ArchiveBug(BugArchive model)
+        {
+            using (var ctx=new ApplicationDbContext())
+            {
+                var entity =
+                ctx.Bugs.Single(e => e.BugId == model.BugId);
+
+                entity.ActiveProblem = model.ActiveProblem;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteBug(int BugId)
+        {
+            using (var ctx= new ApplicationDbContext())
+            {
+                var entity = ctx.Bugs.Single(e => e.BugId == BugId);
+
+                ctx.Bugs.Remove(entity);
+                return ctx.SaveChanges() == 1;
             }
         }
     }

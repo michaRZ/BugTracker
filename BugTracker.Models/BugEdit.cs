@@ -17,7 +17,6 @@ namespace BugTracker.Models
         public int ProjectId { get; set; }
         public int? AssignedTo { get; set; }
         public Stage Status { get; set; }
-        public bool ActiveProblem { get; set; }
         public Priority Priority { get; set; }
 
         public DateTimeOffset ExpectedResolutionUTC { get; set; }
