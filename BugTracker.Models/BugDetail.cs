@@ -17,10 +17,11 @@ namespace BugTracker.Models
         public int? AssignedTo { get; set; }
         public Stage Status { get; set; }
         public bool ActiveProblem { get; set; }
-        public Priority Priority { get; set; }
+        public Priority? Priority { get; set; }
         [Display(Name="Identified")]
         public DateTimeOffset IdentifiedUtc { get; set; }
         [Display(Name="Created")]
         public DateTimeOffset CreatedUTC { get; set; }
+        public DateTimeOffset? ModifiedUTC { get; set; }
     }
 }
