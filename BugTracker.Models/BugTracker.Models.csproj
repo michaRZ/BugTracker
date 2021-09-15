@@ -57,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BugArchive.cs" />
+    <Compile Include="BugResolve.cs" />
     <Compile Include="ProjectCreate.cs" />
     <Compile Include="ProjectDetail.cs" />
     <Compile Include="ProjectEdit.cs" />
