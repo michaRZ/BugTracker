@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BugArchive.cs" />
+    <Compile Include="BugResolve.cs" />
+    <Compile Include="ProjectCreate.cs" />
+    <Compile Include="ProjectDetail.cs" />
+    <Compile Include="ProjectEdit.cs" />
+    <Compile Include="ProjectListItem.cs" />
     <Compile Include="PersonCreate.cs" />
     <Compile Include="PersonDetail.cs" />
     <Compile Include="PersonEdit.cs" />
@@ -67,6 +73,7 @@
     <Compile Include="BugEdit.cs" />
     <Compile Include="BugListItem.cs" />
     <Compile Include="BugStageEdit.cs" />
+    <Compile Include="ProjectStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
