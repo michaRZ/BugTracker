@@ -18,7 +18,10 @@ namespace BugTracker.Data
         public string Email { get; set; }
         [Required]
         public string Role { get; set; }
-        public int? AssignedProject { get; set; }
+
+        [ForeignKey(nameof(ProjectId))]
+        [Display(Name = "Assigned Project")]
+        public int? ProjectId { get; set; } 
         public bool IsActive { get; set; }
     }
 }
