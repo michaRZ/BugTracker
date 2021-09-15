@@ -62,6 +62,15 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok(bug);
         }
+        [HttpGet]
+        public IHttpActionResult GetbyDesc(string search)
+        {
+            var bugService = CreateBugService();
+            var bug = bugService.GetByDesc(search);
+
+            return Ok(bug);
+
+        }
 
         [HttpPut]
         public IHttpActionResult EditBug(BugEdit model)
