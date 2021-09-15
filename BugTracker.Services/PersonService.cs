@@ -49,5 +49,53 @@ namespace BugTracker.Services
             }
         }
 
+        public PersonDetail GetPersonById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .People
+                    .Single(e => e.PersonId == id);
+                return
+                    new PersonDetail
+                    {
+                    PersonId = entity.PersonId,
+                    Name = entity.Name,
+                    Email = entity.Email,
+                    Role = entity.Role,
+                    IsActive = entity.IsActive
+                    };
+            }
+        }
+        public bool UpdatePerson(PersonEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .People
+                    .Single(e => e.PersonId == model.PersonId);
+                entity.Name = model.Name;
+                entity.Email = model.Email;
+                entity.Role = model.Role;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
+
+        public bool DeletePerson(int personId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = 
+                    ctx
+                        .People
+                        .Single(e => e.PersonId == personId);
+                ctx.People.Remove(entity);
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }
