@@ -8,6 +8,11 @@ namespace BugTracker.Services
 {
     public class PersonService
     {
-        // not sure about the guid thing
+        private readonly Guid _userId;
+        public PersonService(Guid userId)
+        {
+            _userId = userId;
+        }
+
     }
 }
