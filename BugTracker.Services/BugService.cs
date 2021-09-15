@@ -145,7 +145,7 @@ namespace BugTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ResolveBug(BugResolve model)
+        public bool BugResolve(BugResolve model)
         {
             using (var ctx = new ApplicationDbContext())
             {

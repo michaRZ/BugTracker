@@ -104,5 +104,19 @@ namespace BugTracker.WebAPI.Controllers
             return Ok();
 
         }
+        [HttpPut] 
+        public IHttpActionResult ResolveBug(BugResolve model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bugService = CreateBugService();
+
+            if (!bugService.BugResolve(model))
+                return InternalServerError();
+
+            return Ok();
+
+        }
     }
 }
