@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Models
 {
-    public class ProjectEdit
+    public class ProjectStatus
     {
+        // Model for archiving a project, with nullable completion date
         public int ProjectId { get; set; }
-        public string ProjectName { get; set; }
         public bool IsActive { get; set; }
-        public DateTimeOffset StartDate { get; set; }
-        public DateTimeOffset DateEndProjected { get; set; }
+        public DateTimeOffset? DateEndActual { get; set; }
     }
 }
