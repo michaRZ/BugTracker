@@ -133,7 +133,7 @@ namespace BugTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool ResolveBug(BugResolve model)
+        public bool BugResolve(BugResolve model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -145,6 +145,18 @@ namespace BugTracker.Services
                 entity.ActiveProblem = false;
                 entity.ResolutionSummary = model.ResolutionSummary;
                 entity.ActualResolutionUTC = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool AssignBug(BugAssign model)
+        {
+            using (var ctx=new ApplicationDbContext())
+            {
+                var entity = ctx.Bugs.Single(e => e.BugId == model.BugId);
+
+                entity.AssignedTo = model.AssignedTo;
+                entity.Status = Stage.Assign;
 
                 return ctx.SaveChanges() == 1;
             }
