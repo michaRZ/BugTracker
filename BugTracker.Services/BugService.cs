@@ -135,7 +135,19 @@ namespace BugTracker.Services
         }
         public bool ResolveBug(BugResolve model)
         {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Bugs.Single(e => e.BugId == model.BugId);
 
+                entity.BugDescription = model.BugDescription;
+                entity.Priority = Priority.None;
+                entity.Status = Stage.Closed;
+                entity.ActiveProblem = false;
+                entity.ResolutionSummary = model.ResolutionSummary;
+                entity.ActualResolutionUTC = DateTimeOffset.Now;
+
+                return ctx.SaveChanges() == 1;
+            }
         }
         public bool ArchiveBug(BugArchive model)
         {
