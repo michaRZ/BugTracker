@@ -8,6 +8,12 @@ namespace BugTracker.Models
 {
     public class ProjectDetail
     {
-
+        public int ProjectId { get; set; }
+        public string ProjectName { get; set; }
+        public bool IsActive { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset DateEndProjected { get; set; }
+        public DateTimeOffset? DateEndActual { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

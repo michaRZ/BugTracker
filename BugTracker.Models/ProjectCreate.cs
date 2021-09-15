@@ -14,9 +14,10 @@ namespace BugTracker.Models
         [MaxLength(100, ErrorMessage = "Project Name character limit exceeded")]
         public string ProjectName { get; set; }
 
-        [Required(ErrorMessage = "Please enter a Start Date for the project")]
+        [Required]
         public DateTimeOffset StartDate { get; set; }
-        [Required(ErrorMessage = "Please enter a projected End Date for the project")]
+
+        [Required]
         public DateTimeOffset DateEndProjected { get; set; }
     }
 }

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ProjectCreate.cs" />
     <Compile Include="ProjectDetail.cs" />
+    <Compile Include="ProjectEdit.cs" />
     <Compile Include="ProjectListItem.cs" />
     <Compile Include="PersonCreate.cs" />
     <Compile Include="PersonDetail.cs" />
