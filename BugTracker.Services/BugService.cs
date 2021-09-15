@@ -120,7 +120,7 @@ namespace BugTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool UpdateBug(BugStageEdit model)
+        public bool RestageBug(BugStageEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {

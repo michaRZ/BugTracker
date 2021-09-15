@@ -62,5 +62,33 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok(bug);
         }
+
+        [HttpPut]
+        public IHttpActionResult EditBug(BugEdit model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bugService = CreateBugService();
+
+            if (!bugService.EditBug(model))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpPut]
+        public IHttpActionResult RestageBug(BugStageEdit model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bugService = CreateBugService();
+
+            if (!bugService.RestageBug(model))
+                return InternalServerError();
+
+            return Ok();
+        }
     }
 }
