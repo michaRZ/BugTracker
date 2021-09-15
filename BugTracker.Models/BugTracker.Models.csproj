@@ -73,6 +73,7 @@
     <Compile Include="BugEdit.cs" />
     <Compile Include="BugListItem.cs" />
     <Compile Include="BugStageEdit.cs" />
+    <Compile Include="ProjectStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -48,8 +48,10 @@ namespace BugTracker.Services
                     {
                         ProjectId = p.ProjectId,
                         ProjectName = p.ProjectName,
+                        IsActive = p.IsActive,
                         StartDate = p.StartDate,
-                        DateEndProjected = p.DateEndProjected
+                        DateEndProjected = p.DateEndProjected,
+                        DateEndActual = p.DateEndActual
                     });
                 return query.ToArray();
             }
@@ -122,7 +124,46 @@ namespace BugTracker.Services
         }
 
 
-        // Delete project
+        // Update a Project (not incl. active status or actual end date)
+        public bool UpdateProject(ProjectEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Projects
+                    .Single(p => p.ProjectId == model.ProjectId && p.IsActive == true);
+
+                entity.ProjectName = model.ProjectName;
+                entity.StartDate = model.StartDate;
+                entity.DateEndProjected = model.DateEndProjected;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
+        // Update project active status and actual end date - SOFT DELETE
+        public bool UpdateProjectStatus(ProjectStatus model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Projects
+                    .Single(p => p.ProjectId == model.ProjectId);
+
+                entity.IsActive = model.IsActive;
+                entity.DateEndActual = model.DateEndActual;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
+        // Delete project   // ideally only accessible by user with admin priveleges
         public bool DeleteProject(int projectId)
         {
             using (var ctx = new ApplicationDbContext())
