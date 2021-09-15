@@ -28,7 +28,7 @@ namespace BugTracker.Services
                 AssignedTo = model.AssignedTo,
                 Priority = model.Priority,
                 Status = Stage.New,
-                CreatedUTC = DateTimeOffset.Now
+                CreatedUTC=DateTimeOffset.Now
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -83,20 +83,20 @@ namespace BugTracker.Services
             {
                 var entity = ctx.Bugs.Single(e => e.BugId == id && e.ActiveProblem);
 
-                return
-                 new BugDetail
-                 {
-                     BugId = entity.BugId,
-                     BugName = entity.BugName,
-                     BugDescription = entity.BugDescription,
-                     ProjectId = entity.ProjectId,
-                     Status = entity.Status,
-                     ActiveProblem = entity.ActiveProblem,
-                     Priority = entity.Priority,
-                     IdentifiedUtc = entity.IdentifiedUtc,
-                     CreatedUTC = entity.CreatedUTC,
-                     ModifiedUTC = entity.ModifiedUTC
-                 };
+                return 
+                 new BugDetail 
+                {
+                    BugId=entity.BugId,
+                    BugName=entity.BugName,
+                    BugDescription=entity.BugDescription,
+                    ProjectId=entity.ProjectId,
+                    Status=entity.Status,
+                    ActiveProblem=entity.ActiveProblem,
+                    Priority=entity.Priority,
+                    IdentifiedUtc=entity.IdentifiedUtc,
+                    CreatedUTC=entity.CreatedUTC,
+                    ModifiedUTC=entity.ModifiedUTC
+                };
             }
         }
         public bool EditBug(BugEdit model)
@@ -120,7 +120,7 @@ namespace BugTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool RestageBug(BugStageEdit model)
+        public bool UpdateBug(BugStageEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -133,19 +133,7 @@ namespace BugTracker.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-        public bool AssignBug(BugAssign model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity = ctx.Bugs.Single(e => e.BugId == model.BugId);
-
-                entity.AssignedTo = model.AssignedTo;
-                entity.Status = Stage.Assign;
-
-                return ctx.SaveChanges() == 1;
-            }
-        }
-        public bool BugResolve(BugResolve model)
+        public bool ResolveBug(BugResolve model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -163,7 +151,7 @@ namespace BugTracker.Services
         }
         public bool ArchiveBug(BugArchive model)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var ctx=new ApplicationDbContext())
             {
                 var entity =
                 ctx.Bugs.Single(e => e.BugId == model.BugId);
@@ -176,7 +164,7 @@ namespace BugTracker.Services
 
         public bool DeleteBug(int BugId)
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var ctx= new ApplicationDbContext())
             {
                 var entity = ctx.Bugs.Single(e => e.BugId == BugId);
 
