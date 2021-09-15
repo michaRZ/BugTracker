@@ -1,4 +1,5 @@
-﻿using BugTracker.Services;
+﻿using BugTracker.Models;
+using BugTracker.Services;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,22 @@ namespace BugTracker.WebAPI.Controllers
             return bugService;
         }
 
+        [HttpPost]
+        public IHttpActionResult PostBug(BugCreate model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var bugService = CreateBugService();
+
+            if (!bugService.CreateBug(model))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         [HttpGet]
-        public IHttpActionResult Get()
+        public IHttpActionResult GetBugs()
         {
             var bugService = CreateBugService();
             var bugs = bugService.GetBugs();
@@ -30,5 +45,22 @@ namespace BugTracker.WebAPI.Controllers
             return Ok(bugs);
         }
 
+        [HttpGet]
+        public IHttpActionResult GetById(int id)
+        {
+            var bugService = CreateBugService();
+            var bug = bugService.GetBugById(id);
+
+            return Ok(bug);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetProjectBugs(int id)
+        {
+            var bugService = CreateBugService();
+            var bug = bugService.GetBugsByProjectId(id);
+
+            return Ok(bug);
+        }
     }
 }
