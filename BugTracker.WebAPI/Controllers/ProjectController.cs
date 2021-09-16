@@ -12,7 +12,6 @@ using System.Web.Http;
 namespace BugTracker.WebAPI.Controllers
 {
     [Authorize]
-
     public class ProjectController : ApiController
     {
         [HttpPost]

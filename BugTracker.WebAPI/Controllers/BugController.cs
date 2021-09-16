@@ -12,6 +12,7 @@ using System.Web.Http;
 namespace BugTracker.WebAPI.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Bug")]
     public class BugController : ApiController
     {
         private BugService CreateBugService()
@@ -22,6 +23,7 @@ namespace BugTracker.WebAPI.Controllers
             return bugService;
         }
 
+        [Route("")]
         [HttpPost]
         public IHttpActionResult PostBug(BugCreate model)
         {
@@ -35,7 +37,7 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok();
         }
-
+        [Route("")]
         [HttpGet]
         public IHttpActionResult GetBugs()
         {
@@ -44,9 +46,9 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok(bugs);
         }
-
+        [Route("{id:int}")]
         [HttpGet]
-        public IHttpActionResult GetById(int id)
+        public IHttpActionResult GetById([FromUri]int id)
         {
             var bugService = CreateBugService();
             var bug = bugService.GetBugById(id);
@@ -54,15 +56,25 @@ namespace BugTracker.WebAPI.Controllers
             return Ok(bug);
         }
 
+        [Route("proj/{id:int}")]
         [HttpGet]
-        public IHttpActionResult GetProjectBugs(int id)
+        public IHttpActionResult GetProjectBugs([FromUri]int id)
         {
             var bugService = CreateBugService();
             var bug = bugService.GetBugsByProjectId(id);
 
             return Ok(bug);
         }
+        [HttpGet]
+        public IHttpActionResult GetbyDesc(string search)
+        {
+            var bugService = CreateBugService();
+            var bug = bugService.GetBySearch(search);
 
+            return Ok(bug);
+
+        }
+        [Route("")]
         [HttpPut]
         public IHttpActionResult EditBug(BugEdit model)
         {
@@ -77,6 +89,7 @@ namespace BugTracker.WebAPI.Controllers
             return Ok();
         }
 
+        [Route("stage")]
         [HttpPut]
         public IHttpActionResult RestageBug(BugStageEdit model)
         {
@@ -90,6 +103,8 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok();
         }
+
+        [Route("assign")]
         [HttpPut]
         public IHttpActionResult AssignBug(BugAssign model)
         {
@@ -104,6 +119,8 @@ namespace BugTracker.WebAPI.Controllers
             return Ok();
 
         }
+
+        [Route("res")]
         [HttpPut] 
         public IHttpActionResult ResolveBug(BugResolve model)
         {
@@ -117,8 +134,10 @@ namespace BugTracker.WebAPI.Controllers
 
             return Ok();
         }
+
+        [Route("archive/{id:int}")]
         [HttpPut]
-        public IHttpActionResult ArchiveBug(BugArchive model)
+        public IHttpActionResult ArchiveBug([FromUri]int id,[FromBody]BugArchive model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -131,6 +150,7 @@ namespace BugTracker.WebAPI.Controllers
             return Ok();
         }
 
+        [Route("")]
         [HttpDelete]
         public IHttpActionResult DeleteBug(int id)
         {

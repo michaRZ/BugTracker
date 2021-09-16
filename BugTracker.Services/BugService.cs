@@ -58,6 +58,29 @@ namespace BugTracker.Services
                 return query.ToArray();
             }
         }
+        public IEnumerable<BugListItem> GetBySearch(string search)
+        {
+            using (var ctx= new ApplicationDbContext())
+            {
+                var obj = search.ToUpper();
+                var query = ctx.Bugs.Where(e => e.BugDescription.ToUpper().Contains(obj)||
+                e.ResolutionSummary.ToUpper().Contains(obj)
+                ).Select
+                    (
+                        e => new BugListItem
+                        {
+                            BugId = e.BugId,
+                            BugName = e.BugName,
+                            IdentifiedUtc = e.IdentifiedUtc,
+                            ProjectId = e.ProjectId,
+                            AssignedTo = e.AssignedTo,
+                            Status = e.Status
+                        }
+                    );
+                return query.ToArray();
+            }
+        }
+
         public IEnumerable<BugListItem> GetBugsByProjectId(int id)
         {
             using (var ctx = new ApplicationDbContext())
