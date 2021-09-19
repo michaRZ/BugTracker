@@ -12,8 +12,10 @@ using System.Web.Http;
 namespace BugTracker.WebAPI.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Project")]
     public class ProjectController : ApiController
     {
+        [Route("")]
         [HttpPost]
         public IHttpActionResult Post(ProjectCreate project)
         {
@@ -28,7 +30,7 @@ namespace BugTracker.WebAPI.Controllers
             return Ok("You created a new project!");
         }
 
-
+        [Route("")]
         [HttpGet]
         public IHttpActionResult GetAllProjects()
         {
@@ -37,66 +39,61 @@ namespace BugTracker.WebAPI.Controllers
             return Ok(projects);
         }
 
-
+        [Route("")]
         [HttpGet]
-        public IHttpActionResult GetActiveProjcts()
+        public IHttpActionResult GetProjectsByStatus([FromUri] bool status)
         {
             ProjectService projectService = CreateProjectService();
-            var activeProjects = projectService.GetActiveProjects();
-            return Ok(activeProjects);
+            var projects = projectService.GetProjectsByStatus(status);
+            return Ok(projects);
         }
 
 
+        [Route("{id:int}")]
         [HttpGet]
-        public IHttpActionResult GetInactiveProjects()
-        {
-            ProjectService projectService = CreateProjectService();
-            var inactiveProjects = projectService.GetInactiveProjects();
-            return Ok(inactiveProjects);
-        }
-
-
-        [HttpGet]
-        public IHttpActionResult GetProjectById(int id)
+        public IHttpActionResult GetProjectById([FromUri] int id)
         {
             ProjectService projectService = CreateProjectService();
             var project = projectService.GetProjectById(id);
             return Ok(project);
         }
 
-
+        [Route("")]
         [HttpPut]
-        public IHttpActionResult Put(ProjectEdit project)
+        public IHttpActionResult Put(ProjectEdit model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            /*if (model.IsActive != true)
+                return StatusCode(HttpStatusCode.MethodNotAllowed);*/
+
             var service = CreateProjectService();
 
-            if (!service.UpdateProject(project))
+            if (!service.EditProject(model))
                 return InternalServerError();
 
             return Ok("Project details updated!");
         }
 
-
+        [Route("status")]
         [HttpPut]
-        public IHttpActionResult PutStatus(ProjectStatus project)
+        public IHttpActionResult PutStatus(ProjectStatus model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateProjectService();
 
-            if (!service.UpdateProjectStatus(project))
+            if (!service.UpdateProjectStatus(model))
                 return InternalServerError();
 
             return Ok("Project status updated!");
         }
 
-
+        [Route("{id:int}")]
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete([FromUri] int id)
         {
             var service = CreateProjectService();
 
