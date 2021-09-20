@@ -64,9 +64,11 @@ namespace BugTracker.Services
                     Name = entity.Name,
                     Email = entity.Email,
                     Role = entity.Role,
+                    ProjectId = entity.ProjectId,
                     IsActive = entity.IsActive
                     };
             }
+
         }
         public bool UpdatePerson(PersonEdit model)
         {
@@ -79,6 +81,8 @@ namespace BugTracker.Services
                 entity.Name = model.Name;
                 entity.Email = model.Email;
                 entity.Role = model.Role;
+                entity.ProjectId = model.ProjectId;
+                entity.IsActive = model.IsActive;
                 return ctx.SaveChanges() == 1;
 
             }

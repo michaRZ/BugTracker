@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BugTracker.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,10 +12,15 @@ namespace BugTracker.Models
     {
         [Required]
         [MinLength(2, ErrorMessage ="Please Enter a valid name")]
+        [MaxLength(200, ErrorMessage ="There are too many characters in this field")]
         public string Name { get; set; }
         [Required]
+        [MinLength(2, ErrorMessage = "Please Enter a valid email")]
+        [MaxLength(200, ErrorMessage = "There are too many characters in this field")]
         public string Email { get; set; }
         [Required]
-        public string Role { get; set; }
+        [MinLength(2, ErrorMessage = "Please Enter a valid role")]
+        [MaxLength(200, ErrorMessage = "There are too many characters in this field")]
+        public Role Role { get; set; }
     }
 }
