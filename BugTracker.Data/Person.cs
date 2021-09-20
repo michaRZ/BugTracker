@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Data
 {
+    public enum Role {Intern, JuniorDeveloper, SoftwareDeveloper, TechnicalLead, SoftwareArchitect}
     public class Person
     {
         [Key]
@@ -17,7 +18,7 @@ namespace BugTracker.Data
         [Required]
         public string Email { get; set; }
         [Required]
-        public string Role { get; set; }
+        public Role Role { get; set; }
 
         [ForeignKey(nameof(ProjectId))]
         [Display(Name = "Assigned Project")]
