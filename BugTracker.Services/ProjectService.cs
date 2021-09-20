@@ -58,36 +58,14 @@ namespace BugTracker.Services
         }
 
 
-        // Get all ACTIVE projects
-        public IEnumerable<ProjectListItem> GetActiveProjects()
+        // Get project by IsActive status
+        public IEnumerable<ProjectListItem> GetProjectsByStatus(bool status)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
+                var query = ctx
                     .Projects
-                    .Where(p => p.IsActive == true)
-                    .Select(p => new ProjectListItem
-                    {
-                        ProjectId = p.ProjectId,
-                        ProjectName = p.ProjectName,
-                        StartDate = p.StartDate,
-                        DateEndProjected = p.DateEndProjected
-                    });
-                return query.ToArray();
-            }
-        }
-
-
-        // Get all INACTIVE projects
-        public IEnumerable<ProjectListItem> GetInactiveProjects()
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                    .Projects
-                    .Where(p => p.IsActive == false)
+                    .Where(p => p.IsActive == status)
                     .Select(p => new ProjectListItem
                     {
                         ProjectId = p.ProjectId,
@@ -96,9 +74,11 @@ namespace BugTracker.Services
                         DateEndProjected = p.DateEndProjected,
                         DateEndActual = p.DateEndActual
                     });
+
                 return query.ToArray();
             }
         }
+
 
         // Get project by Id
         public ProjectDetail GetProjectById(int id)
@@ -125,14 +105,14 @@ namespace BugTracker.Services
 
 
         // Update a Project (not incl. active status or actual end date)
-        public bool UpdateProject(ProjectEdit model)
+        public bool EditProject(ProjectEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                     .Projects
-                    .Single(p => p.ProjectId == model.ProjectId && p.IsActive == true);
+                    .Single(p => p.ProjectId == model.ProjectId /*&& p.IsActive == true*/);
 
                 entity.ProjectName = model.ProjectName;
                 entity.StartDate = model.StartDate;
