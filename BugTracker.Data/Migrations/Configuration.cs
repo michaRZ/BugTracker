@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "BugTracker.Data.ApplicationDbContext";
         }
 
         protected override void Seed(BugTracker.Data.ApplicationDbContext context)

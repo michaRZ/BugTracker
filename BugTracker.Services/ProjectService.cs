@@ -70,6 +70,7 @@ namespace BugTracker.Services
                     {
                         ProjectId = p.ProjectId,
                         ProjectName = p.ProjectName,
+                        IsActive = status,
                         StartDate = p.StartDate,
                         DateEndProjected = p.DateEndProjected,
                         DateEndActual = p.DateEndActual
