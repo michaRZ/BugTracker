@@ -20,7 +20,7 @@ namespace BugTracker.Data
         [Required]
         public Role Role { get; set; }
 
-        //[ForeignKey(nameof(Project))]
+        [ForeignKey(nameof(Project))]
         [Display(Name = "Assigned Project")]
         public int? ProjectId { get; set; } 
         public bool IsActive { get; set; }
