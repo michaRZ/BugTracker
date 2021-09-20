@@ -3,10 +3,49 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Bug",
+                c => new
+                    {
+                        BugId = c.Int(nullable: false, identity: true),
+                        BugName = c.String(nullable: false),
+                        BugDescription = c.String(nullable: false),
+                        IdentifiedUtc = c.DateTimeOffset(nullable: false, precision: 7),
+                        ProjectId = c.Int(nullable: false),
+                        AssignedTo = c.Int(),
+                        Status = c.Int(nullable: false),
+                        ActiveProblem = c.Boolean(nullable: false),
+                        Priority = c.Int(),
+                        ExpectedResolutionUTC = c.DateTimeOffset(nullable: false, precision: 7),
+                        ActualResolutionUTC = c.DateTimeOffset(precision: 7),
+                        ResolutionSummary = c.String(),
+                        CreatedUTC = c.DateTimeOffset(nullable: false, precision: 7),
+                        ModifiedUTC = c.DateTimeOffset(precision: 7),
+                        ModifiedBy = c.String(),
+                    })
+                .PrimaryKey(t => t.BugId)
+                .ForeignKey("dbo.Project", t => t.ProjectId, cascadeDelete: true)
+                .Index(t => t.ProjectId);
+            
+            CreateTable(
+                "dbo.Person",
+                c => new
+                    {
+                        PersonId = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        Email = c.String(nullable: false),
+                        Role = c.String(nullable: false),
+                        ProjectId = c.Int(),
+                        IsActive = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.PersonId)
+                .ForeignKey("dbo.Project", t => t.ProjectId)
+                .Index(t => t.ProjectId);
+            
             CreateTable(
                 "dbo.Project",
                 c => new
@@ -18,9 +57,7 @@
                         DateEndProjected = c.DateTimeOffset(nullable: false, precision: 7),
                         DateEndActual = c.DateTimeOffset(precision: 7),
                         CreatedUtc = c.DateTimeOffset(nullable: false, precision: 7),
-                        CreatedBy = c.Int(nullable: false),
                         ModifiedUtc = c.DateTimeOffset(precision: 7),
-                        ModifiedBy = c.Int(),
                     })
                 .PrimaryKey(t => t.ProjectId);
             
@@ -102,16 +139,22 @@
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
+            DropForeignKey("dbo.Person", "ProjectId", "dbo.Project");
+            DropForeignKey("dbo.Bug", "ProjectId", "dbo.Project");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
+            DropIndex("dbo.Person", new[] { "ProjectId" });
+            DropIndex("dbo.Bug", new[] { "ProjectId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Project");
+            DropTable("dbo.Person");
+            DropTable("dbo.Bug");
         }
     }
 }
