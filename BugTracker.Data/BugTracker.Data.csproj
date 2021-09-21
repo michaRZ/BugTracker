@@ -89,9 +89,15 @@
   <ItemGroup>
     <Compile Include="Bug.cs" />
     <Compile Include="IdentityModels.cs" />
+<<<<<<< HEAD
+    <Compile Include="Migrations\202109201523283_initial.cs" />
+    <Compile Include="Migrations\202109201523283_initial.designer.cs">
+      <DependentUpon>202109201523283_initial.cs</DependentUpon>
+=======
     <Compile Include="Migrations\202109201514224_initial.cs" />
     <Compile Include="Migrations\202109201514224_initial.designer.cs">
       <DependentUpon>202109201514224_initial.cs</DependentUpon>
+>>>>>>> 4c13a46f11181a4f59c4deec7b7a56fda9e798e9
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
@@ -103,8 +109,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Migrations\202109201523283_initial.resx">
+      <DependentUpon>202109201523283_initial.cs</DependentUpon>
+=======
     <EmbeddedResource Include="Migrations\202109201514224_initial.resx">
       <DependentUpon>202109201514224_initial.cs</DependentUpon>
+>>>>>>> 4c13a46f11181a4f59c4deec7b7a56fda9e798e9
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
