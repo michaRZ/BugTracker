@@ -13,7 +13,55 @@ Bugs can be created and tied to a project as well as the people that work on the
 Below is a link to our bug tracking planning documentation. Below that is a short summary of the page if you want TL;DR instead:
 - [Planning Documentation](https://docs.google.com/document/d/1ktK-8RbWFFBU3GeE9QMkWSnxeN5B-88NMvJKZRC3Klo/edit?usp=sharing)
 
+### Mission Statement
+To Develop a Bug Tracking API for Managers of Dev teams to track issues with projects and resolve them
 
+### Database
+Below are most of the properties of each type of data.
 
+#### Project
+- ##### ProjectId
+- ##### ProjectName
+- ##### IsActive
+- ##### StartDate
+- ##### DateProjectedEnd
+- ##### DateEndActual
+
+#### Person
+- ##### PersonId
+- ##### Name
+- ##### Email
+- ##### Role
+- ##### AssignedProject
+- ##### IsActive
+
+### Bug
+*This list is the least comprehensive as bug has too many properties to list here*
+- ##### BugId
+- ##### BugDescription
+- ##### Status
+- ##### Priority
+- ##### ActiveProblem
+- ##### ProjectId
+- ##### AssignedTo
+
+## [Database Diagram](https://dbdiagram.io/d/613f994c825b5b01460028dd)
+
+## Features
+### Version 1.0
+- Search by ProjectId
+- Search by BugId
+- Search by Summary
+- Search resolved/unresolved bugs
+- Search by Oldest Date
+- Search for active bug past Projected Date
+- Add a Bug
+- Edit a Bug
+- Resolve a Bug
+
+## [Trello](https://trello.com/b/Owecq6EG/bug-tracker)
+
+## Comments
+- We are aware that the archive Methods do not actually arcvhive any data, we however couldn't comee up with a more apt description for their functions.
 
 
