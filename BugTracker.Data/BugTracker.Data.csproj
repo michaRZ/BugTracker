@@ -89,11 +89,6 @@
   <ItemGroup>
     <Compile Include="Bug.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202109201514224_initial.cs" />
-    <Compile Include="Migrations\202109201514224_initial.designer.cs">
-      <DependentUpon>202109201514224_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,11 +96,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109201514224_initial.resx">
-      <DependentUpon>202109201514224_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
