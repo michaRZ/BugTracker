@@ -113,7 +113,7 @@ namespace BugTracker.Services
                 var entity =
                     ctx
                     .Projects
-                    .Single(p => p.ProjectId == model.ProjectId /*&& p.IsActive == true*/);
+                    .Single(p => p.ProjectId == model.ProjectId /*&& p.IsActive*/);
 
                 entity.ProjectName = model.ProjectName;
                 entity.StartDate = model.StartDate;
